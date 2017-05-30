@@ -13,9 +13,9 @@ CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 TraceBufferSize=0x00010000
 TraceStallIfFIFOFull=0x00000000
-TracePortSize=0x00000000
+TracePortSize=0x00000004
 [DebugChecksum]
-Checksum=-1577292319
+Checksum=1373013348
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -117,7 +117,7 @@ ProbeSetup0=2 1 1 2 0 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\UART\Uart_CmdExec.c}.510.5" 0 0 1 "" 0 "" 0
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\UART\Uart_CmdExec.c}.511.9" 0 0 1 "" 0 "" 0
 Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\platform\base\hal\micro\cortexm3\efm32\bootloader-interface-standalone.c}.66.5" 0 0 1 "" 0 "" 0
 Count=2
 [Aliases]

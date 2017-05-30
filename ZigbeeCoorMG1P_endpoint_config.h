@@ -72,6 +72,7 @@ PGM EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[] 
     { 0x0202, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0300, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0500, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0502, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_DEFAULT_RESPONSE_FUNCTION), emberAfFuncArraySimpleMeteringClusterClient, },    \
     { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0B03, (EmberAfAttributeMetadata*)&(generatedAttributes[14]), 0, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
@@ -80,7 +81,7 @@ PGM EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[] 
 
 // Endpoint types
 #define GENERATED_ENDPOINT_TYPES {        \
-    { (EmberAfCluster*)&(generatedClusters[0]), 19, 6 }, \
+    { (EmberAfCluster*)&(generatedClusters[0]), 20, 6 }, \
   }
 
 
@@ -336,6 +337,10 @@ PGM EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[] 
     { 0x0300, 0x08, COMMAND_MASK_OUTGOING_CLIENT }, /* Color Control / MoveColor */ \
     { 0x0300, 0x09, COMMAND_MASK_OUTGOING_CLIENT }, /* Color Control / StepColor */ \
     { 0x0500, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* IAS Zone / ZoneEnrollResponse */ \
+    { 0x0500, 0x00, COMMAND_MASK_INCOMING_CLIENT }, /* IAS Zone / ZoneStatusChangeNotification */ \
+    { 0x0500, 0x01, COMMAND_MASK_INCOMING_CLIENT }, /* IAS Zone / ZoneEnrollRequest */ \
+    { 0x0502, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* IAS WD / StartWarning */ \
+    { 0x0502, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* IAS WD / Squawk */ \
     { 0x0702, 0x00, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / GetProfileResponse */ \
     { 0x0702, 0x01, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / RequestMirror */ \
     { 0x0702, 0x02, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / RemoveMirror */ \
@@ -344,5 +349,5 @@ PGM EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[] 
     { 0x0B03, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Appliance Statistics / LogRequest */ \
     { 0x0B03, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* Appliance Statistics / LogQueueRequest */ \
   }
-#define EMBER_AF_GENERATED_COMMAND_COUNT (58)
+#define EMBER_AF_GENERATED_COMMAND_COUNT (62)
 #endif // __AF_ENDPOINT_CONFIG__

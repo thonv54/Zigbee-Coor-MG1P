@@ -34,9 +34,9 @@
 typedef enum {
     Zbs_UartError       	      =	  0x00,
     Zbs_NwkInfo                 =	  0x01,
-    
     Zbs_PjoinStatus	            =	  0x05,
     Zbs_ZclClusterCmdResponse   =   0x06,
+    Zbs_ZclClusterCmdRequest    =   0x86,
     Zbs_ZclGlobalCmdResponse    =   0x07,
     Zbs_ZdoCmdResponse          =   0x08,
     Zbs_DeviceMCVersion	        =	  0x0F,
@@ -105,6 +105,18 @@ typedef struct{
     int8u* CmdPayload;
     int8u CheckXor;
 }Zbs_ZclClusterCmdResponseStr;
+    
+typedef struct{
+    int8u Length;
+    int8u TxSeqNumber;
+    int8u CmdId;
+    int8u NwkAddr[2];
+    int8u Endpoint;
+    int8u ClusterId[2];
+    int8u CmdPayloadLength;
+    int8u* CmdPayload;
+    int8u CheckXor;
+}Zbs_ZclClusterCmdRequestStr;
 
 typedef struct{
     int8u Length;
@@ -253,6 +265,20 @@ void UartSendZclGlobalCmdResponse(int16u NwkAddr,
  * @retval None
  */
 void UartSendZclClusterCmdResponse(int16u NwkAddr,
+                                   int8u Endpoint,
+                                   int16u ClusterId,
+                                   int8u CmdPayloadLength,
+                                   int8u *CmdPayload);
+/**
+ * @func   UartSendZclClusterCmdRequest
+ *
+ * @brief  
+ *
+ * @param  None
+ *
+ * @retval None
+ */
+void UartSendZclClusterCmdRequest(int16u NwkAddr,
                                    int8u Endpoint,
                                    int16u ClusterId,
                                    int8u CmdPayloadLength,

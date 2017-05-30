@@ -35,6 +35,7 @@ typedef enum {
     HC_NetworkPjoin = 0x83,
     HC_PjoinStatus = 0x85,
 
+    HC_ZclClustercmdResponse = 0x06,
     HC_ZclClusterCmdRequest = 0x86,
     HC_ZclGlobalCmdRequest = 0x87,
     HC_ZdoCmdRequest = 0x88,

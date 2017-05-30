@@ -250,6 +250,7 @@ int8u HC_GetDeviceMCVersion_Task(int8u *data) {
 
 }
 
+
 /**
  * @func   HC_ZclCLusterCmdResquest_Task
  *
@@ -284,6 +285,40 @@ int8u HC_ZclClusterCmdRequest_Task(int8u *data){
     return UartCmdStatus;
 }
 
+
+/**
+ * @func   HC_ZclCLusterCmdResquest_Task
+ *
+ * @brief  
+ *
+ * @param  None
+ *
+ * @retval None
+ */
+int8u HC_ZclClusterCmdResponse_Task(int8u *data){
+    int8u UartCmdStatus = UartCmdNormal;
+    int16u NwkAddr = MERGE16(data[2],data[3]);
+    int8u Endpoint = data[4];
+    int16u ClusterId = MERGE16(data[5],data[6]);
+    int8u CmdPayloadLength = data[7];
+    int8u* CmdPayload = &data[8];
+
+    emberAfFillExternalBuffer((ZCL_CLUSTER_SPECIFIC_COMMAND | ZCL_FRAME_CONTROL_SERVER_TO_CLIENT | ZCL_DISABLE_DEFAULT_RESPONSE_MASK),
+                        ClusterId,
+                        CmdPayload[0],
+                        "b",
+                        &CmdPayload[1],
+                        CmdPayloadLength - 1);
+    emberAfSetCommandEndpoints(1, Endpoint);
+    if(NwkAddr != 0xFFFF){
+        emberAfSendCommandUnicast(EMBER_OUTGOING_DIRECT, NwkAddr);
+    }
+    else{
+        emberAfSendCommandBroadcast(0xFFFF);
+    }
+    return UartCmdStatus;
+}
+
 /**
  * @func   HC_ZclCLusterCmdResquest_Task
  *
@@ -302,10 +337,10 @@ int8u HC_ZclGlobalCmdRequest_Task(int8u *data){
     int8u GeneralCmdId = data[7];
     int8u CmdPayloadLength = data[8];
     int8u* CmdPayload = &data[9];
-    
+
     emberAfFillExternalBuffer((ZCL_GLOBAL_COMMAND | ZCL_FRAME_CONTROL_CLIENT_TO_SERVER),
-                        ClusterId, 
-                        GeneralCmdId, 
+                        ClusterId,
+                        GeneralCmdId,
                         "b",
                         &CmdPayload[0],
                         CmdPayloadLength);
@@ -322,7 +357,7 @@ int8u HC_ZclGlobalCmdRequest_Task(int8u *data){
 /**
  * @func   HC_ZclCLusterCmdResquest_Task
  *
- * @brief  
+ * @brief
  *
  * @param  None
  *
@@ -349,7 +384,6 @@ int8u HC_ZdoCmdRequest_Task(int8u *data){
     }
     else if(ZdoCmd == IEEE_ADDRESS_REQUEST){
 //        int8u seqNumber = CmdPayload[0];
-        
         int16u NwkAddr = MERGE16(CmdPayload[2],CmdPayload[1]);
         int8u ReportKids = CmdPayload[3];
         int8u ChildStartIndex = CmdPayload[4];
@@ -360,18 +394,20 @@ int8u HC_ZdoCmdRequest_Task(int8u *data){
     }
     else if(ZdoCmd == NODE_DESCRIPTOR_REQUEST){
 //        int8u seqNumber = CmdPayload[0];   
-        
+
         int16u NwkAddr = MERGE16(CmdPayload[2],CmdPayload[1]);
         emberNodeDescriptorRequest (NwkAddr,
                                     EMBER_APS_OPTION_RETRY | EMBER_APS_OPTION_ENABLE_ROUTE_DISCOVERY);
-        
+
     }
     
     else if(ZdoCmd == POWER_DESCRIPTOR_REQUEST){
+
+
     }
     else if (ZdoCmd == SIMPLE_DESCRIPTOR_REQUEST){
 //        int8u seqNumber = CmdPayload[0];
-        
+
         int16u NwkAddr = MERGE16(CmdPayload[2],CmdPayload[1]);
         int8u Endpoint = CmdPayload[3];
 

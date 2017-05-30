@@ -64,7 +64,57 @@ void emberAfMainTickCallback(void){
 
 }
 
+ /** @brief IAS Zone Cluster Zone Status Change Notification
+  *
+  * 
+  *
+  * @param zoneStatus   Ver.: always
+  * @param extendedStatus   Ver.: always
+  * @param zoneId   Ver.: since ha-1.2-05-3520-29
+  * @param delay   Ver.: since ha-1.2-05-3520-29
+  */
+ boolean emberAfIasZoneClusterZoneStatusChangeNotificationCallback(int16u zoneStatus,
+                                                                   int8u extendedStatus,
+                                                                   int8u zoneId,
+                                                                   int16u delay)
+ {
+     
+   return TRUE;
+ }
+ 
+/** @brief IAS Zone Cluster Initiate Normal Operation Mode Response
+ *
+ * 
+ *
+ */
+boolean emberAfIasZoneClusterInitiateNormalOperationModeResponseCallback(void)
+{
+  return FALSE;
+}
 
+/** @brief IAS Zone Cluster Initiate Test Mode Response
+ *
+ * 
+ *
+ */
+boolean emberAfIasZoneClusterInitiateTestModeResponseCallback(void)
+{
+  return FALSE;
+}
+
+/** @brief IAS Zone Cluster Zone Enroll Request
+*
+* 
+*
+* @param zoneType   Ver.: always
+* @param manufacturerCode   Ver.: always
+*/
+boolean emberAfIasZoneClusterZoneEnrollRequestCallback(int16u zoneType,
+                                                    int16u manufacturerCode)
+{
+
+    return TRUE;
+}
 
 
 

@@ -34,6 +34,7 @@ int8u HC_GetNetworkInfo_Task(void);
 int8u HC_NetworkPjoin_Task(int8u *data);
 int8u HC_PjoinStatus_Task(void);
 int8u HC_ZclClusterCmdRequest_Task(int8u *data);
+int8u HC_ZclClusterCmdResponse_Task(int8u *data);
 int8u HC_ZclGlobalCmdRequest_Task(int8u *data);
 int8u HC_ZdoCmdRequest_Task(int8u *data);
 int8u HC_ResetDevice_Task(int8u *data);

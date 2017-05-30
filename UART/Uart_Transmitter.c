@@ -165,6 +165,49 @@ void UartSendZclClusterCmdResponse(int16u NwkAddr,
     
     emberEventControlSetActive(ToggleLedErrorEventControl);
 }
+
+
+/**
+ * @func   UartSendZclClusterCmdRequest
+ *
+ * @brief  
+ *
+ * @param  None
+ *
+ * @retval None
+ */
+void UartSendZclClusterCmdRequest(int16u NwkAddr,
+                                   int8u Endpoint,
+                                   int16u ClusterId,
+                                   int8u CmdPayloadLength,
+                                   int8u *CmdPayload){
+                                       
+    Zbs_ZclClusterCmdRequestStr ZclClusterCmdRequestData;
+    int16u val;
+    ZclClusterCmdRequestData.Length = 9 + CmdPayloadLength;
+    ZclClusterCmdRequestData.TxSeqNumber = TxSeqNumber;
+    TxSeqNumber ++;
+    ZclClusterCmdRequestData.CmdId = Zbs_ZclClusterCmdRequest;
+    val = SwapEndiannessInt16u(NwkAddr);
+    memcpy(ZclClusterCmdRequestData.NwkAddr, (int8u*)&val, 2);
+    ZclClusterCmdRequestData.Endpoint = Endpoint;
+    val = SwapEndiannessInt16u(ClusterId);
+    memcpy(ZclClusterCmdRequestData.ClusterId, (int8u*)&val, 2);
+    ZclClusterCmdRequestData.CmdPayloadLength = CmdPayloadLength;
+    ZclClusterCmdRequestData.CmdPayload = CmdPayload;
+    ZclClusterCmdRequestData.CheckXor = 
+        xorStr((int8u *) &ZclClusterCmdRequestData.CmdId,7) ^
+        xorStr(ZclClusterCmdRequestData.CmdPayload,ZclClusterCmdRequestData.CmdPayloadLength);
+
+    emberSerialWriteData(HC_SERIAL,UART_PACKET_KEY,2);
+		emberSerialWriteData(HC_SERIAL,(int8u*)&ZclClusterCmdRequestData,9); 
+		emberSerialWriteData(HC_SERIAL,
+                         ZclClusterCmdRequestData.CmdPayload,
+                         ZclClusterCmdRequestData.CmdPayloadLength); 
+		emberSerialWriteData(HC_SERIAL,(int8u*)&ZclClusterCmdRequestData.CheckXor,1); 
+    
+    emberEventControlSetActive(ToggleLedErrorEventControl);
+}
 /**
  * @func   NwkFormEventFunction
  *

@@ -104,7 +104,7 @@ OverrideClient:500,include,Primary
 
 OverrideClient:501,exclude,Primary
 
-OverrideClient:502,exclude,Primary
+OverrideClient:502,include,Primary
 
 OverrideClient:600,exclude,Primary
 
@@ -363,7 +363,7 @@ Host:unknown
 Platform:efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]
 
 #  Enable callbacks.
-Callbacks:emberAfMainInitCallback,emberAfMainTickCallback,emberAfPreZDOMessageReceivedCallback,emberAfPreCommandReceivedCallback,
+Callbacks:emberAfMainInitCallback,emberAfMainTickCallback,emberAfPreZDOMessageReceivedCallback,emberAfPreCommandReceivedCallback,emberAfIasZoneClusterZoneStatusChangeNotificationCallback,emberAfIasZoneClusterZoneEnrollRequestCallback,
 
 #  Any customer-specific general purpose custom events.
 CustomEvents:BlinkLedAfterResetEventControl,BlinkLedAfterResetEventFunction
@@ -571,7 +571,7 @@ efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flas
 {setupId:bookkeeping
 }
 {setupId:bootloader
-efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=standalone,
 }
 {setupId:callbackConfiguration
 }
@@ -579,29 +579,39 @@ efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flas
 on
 area name off
 appSerial=1
+compile,APPLIANCE_STATISTICS_CLUSTER
 compile,BASIC_CLUSTER
 compile,COLOR_CONTROL_CLUSTER
 compile,DEBUG
 compile,DOOR_LOCK_CLUSTER
 compile,FAN_CONTROL_CLUSTER
 remove,GROUPS_CLUSTER
+compile,IAS_WD_CLUSTER
+compile,IAS_ZONE_CLUSTER
 compile,IDENTIFY_CLUSTER
 compile,LEVEL_CONTROL_CLUSTER
+compile,METER_IDENTIFICATION_CLUSTER
 compile,ON_OFF_CLUSTER
 compile,OTA_BOOTLOAD_CLUSTER
 compile,REPORTING
 remove,SCENES_CLUSTER
+compile,SIMPLE_METERING_CLUSTER
 remove,TIME_CLUSTER
 compile,ZDO
+enable,APPLIANCE_STATISTICS_CLUSTER
 enable,BASIC_CLUSTER
 enable,COLOR_CONTROL_CLUSTER
 enable,DEBUG
 enable,DOOR_LOCK_CLUSTER
 enable,FAN_CONTROL_CLUSTER
+enable,IAS_WD_CLUSTER
+enable,IAS_ZONE_CLUSTER
 enable,IDENTIFY_CLUSTER
 enable,LEVEL_CONTROL_CLUSTER
+enable,METER_IDENTIFICATION_CLUSTER
 enable,ON_OFF_CLUSTER
 enable,OTA_BOOTLOAD_CLUSTER
+enable,SIMPLE_METERING_CLUSTER
 }
 {setupId:halOptions
 }
