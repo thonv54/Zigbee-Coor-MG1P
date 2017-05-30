@@ -60,6 +60,9 @@ void UartProcess(u8_t *UartPacketCommand) {
     case HC_ZclClusterCmdRequest:
         ErrorCode = HC_ZclClusterCmdRequest_Task(UartPacketCommand);
         break;
+    case HC_ZclClustercmdResponse:
+        ErrorCode = HC_ZclClusterCmdResponse_Task(UartPacketCommand);
+        break;
     case HC_ZclGlobalCmdRequest:
         ErrorCode = HC_ZclGlobalCmdRequest_Task(UartPacketCommand);
         break;

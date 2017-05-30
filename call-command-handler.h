@@ -13,6 +13,9 @@
 // Cluster: Identify, server
 EmberAfStatus emberAfIdentifyClusterServerCommandParse(EmberAfClusterCommand *cmd);
 
+// Cluster: IAS Zone, client
+EmberAfStatus emberAfIasZoneClusterClientCommandParse(EmberAfClusterCommand *cmd);
+
 // Cluster: Simple Metering, client
 EmberAfStatus emberAfSimpleMeteringClusterClientCommandParse(EmberAfClusterCommand *cmd);
 
