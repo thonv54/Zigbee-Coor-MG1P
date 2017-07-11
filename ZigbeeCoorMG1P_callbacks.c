@@ -40,6 +40,7 @@
  *
  */
 void emberAfMainInitCallback(void)
+
 {
 
 	emberSerialInit(HC_SERIAL, 19200, PARITY_NONE, 1);

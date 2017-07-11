@@ -375,6 +375,7 @@
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\middleware\glib\glib</state>
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\radio\rail_lib\chip\efr32\rf\common\cortex</state>
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\radio\rail_lib\chip\efr32\rf\rfprotocol\ieee802154\cortex</state>
+          <state>$PROJ_DIR$\..\..\..\platform\base\hal\micro\cortexm3\efm32\board</state>
           <state>$PROJ_DIR$\..\..\..\hardware\kit\common\bsp</state>
           <state>$PROJ_DIR$\..\..\..\hardware\kit\EFR32MG1_BRD4300B\config</state>
           <state>$PROJ_DIR$\..\..\..\platform\bootloader</state>
@@ -709,6 +710,7 @@
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\middleware\glib\glib</state>
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\radio\rail_lib\chip\efr32\rf\common\cortex</state>
           <state>$PROJ_DIR$\..\..\..\platform\base\hal\..\..\radio\rail_lib\chip\efr32\rf\rfprotocol\ieee802154\cortex</state>
+          <state>$PROJ_DIR$\..\..\..\platform\base\hal\micro\cortexm3\efm32\board</state>
           <state>$PROJ_DIR$\..\..\..\hardware\kit\common\bsp</state>
           <state>$PROJ_DIR$\..\..\..\hardware\kit\EFR32MG1_BRD4300B\config</state>
           <state>$PROJ_DIR$\..\..\..\platform\bootloader</state>

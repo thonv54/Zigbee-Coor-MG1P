@@ -186,7 +186,7 @@
         <option>
           <name>CCDefines</name>
 
-          <state>APP_BTL</state>
+          <state>SERIAL_UART_BTL</state>
           <state>CORTEXM3</state>
           <state>CORTEXM3_EFR32</state>
           <state>CORTEXM3_EFR32_MICRO</state>
@@ -554,7 +554,7 @@
         <option>
           <name>ADefines</name>
 
-          <state>APP_BTL</state>
+          <state>SERIAL_UART_BTL</state>
           <state>CORTEXM3</state>
           <state>CORTEXM3_EFM32_MICRO</state>
           <state>CORTEXM3_EFR32_MICRO</state>
@@ -844,7 +844,7 @@
           <name>IlinkConfigDefines</name>
           <state>FLASH_SIZE=262144</state>
           <state>RAM_SIZE=32768</state>
-          <state>APP_BTL=1</state>
+          <state>SERIAL_UART_BTL=1</state>
 
         </option>
         <option>
@@ -1237,10 +1237,9 @@
 <file><name>$PROJ_DIR$/../../../app\builder\ZigbeeCoorMG1P\UART\Uart_CmdExec.c</name></file>
 <file><name>$PROJ_DIR$/../../../app\builder\ZigbeeCoorMG1P\UART\Uart_Receiver.c</name></file>
 <file><name>$PROJ_DIR$/../../../app\builder\ZigbeeCoorMG1P\UART\Uart_Transmitter.c</name></file>
-<file><name>$PROJ_DIR$/../../../platform\base\hal\micro\cortexm3\efm32\bootloader-interface-app.c</name></file>
+<file><name>$PROJ_DIR$/../../../platform\base\hal\micro\cortexm3\efm32\bootloader-interface-standalone.c</name></file>
 <file><name>$PROJ_DIR$/../../../platform\base\hal\micro\cortexm3\efm32\bootloader-interface.c</name></file>
 <file><name>$PROJ_DIR$/../../../platform\bootloader\api\btl_interface.c</name></file>
-<file><name>$PROJ_DIR$/../../../platform\bootloader\api\btl_interface_storage.c</name></file>
 
 
   <file><name>$PROJ_DIR$/../../../protocol\zigbee_5.9\app\framework\plugin\address-table\address-table.c</name></file>

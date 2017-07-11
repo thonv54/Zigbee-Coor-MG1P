@@ -1,5 +1,9 @@
 #ISD App Configuration:3.1
-# ISD version: 4.16.0.201705021924-445
+# ISD version: 4.17.2.201706081924-598
+#  Directory of framework within the stack, which helps in case there are more
+#  frameworks within a stack.
+FrameworkDirectory:protocol\zigbee_5.9\app\framework
+
 #  Identified of a stack descriptor used for this configuration. This should not
 #  be changed manually, unless you really know what you are doing.
 ConfiguratorID:auto-EM35X
@@ -566,7 +570,9 @@ PATH(STACK_RELATIVE):app/builder/ZigbeeCoorMG1P/AppEvent
 PATH(STACK_RELATIVE):app/builder/ZigbeeCoorMG1P/AppEvent/AppEvent.c
 }
 {setupId:boardHeader
-efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=BOARD,efr32/brd4300b,,
+allowMissingHeader:false
+useHeaderInPlace:false
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=BOARD,efr32/hwconf,,
 }
 {setupId:bookkeeping
 }

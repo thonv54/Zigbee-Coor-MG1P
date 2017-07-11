@@ -143,16 +143,9 @@ EmberAfStatus emberAfIasZoneClusterClientCommandParse(EmberAfClusterCommand *cmd
         manufacturerCode = emberAfGetInt16u(cmd->buffer, payloadOffset, cmd->bufLen);
         wasHandled = emberAfIasZoneClusterZoneEnrollRequestCallback(zoneType,
                                                                     manufacturerCode);
-        emberAfFillExternalBuffer((ZCL_CLUSTER_SPECIFIC_COMMAND \
-                     | ZCL_FRAME_CONTROL_CLIENT_TO_SERVER\
-                     | ZCL_DISABLE_DEFAULT_RESPONSE_MASK),
-                    ZCL_IAS_ZONE_CLUSTER_ID,
-                    ZCL_ZONE_ENROLL_RESPONSE_COMMAND_ID,
-                    "u",
-                    EMBER_SUCCESS);
-        emberAfSetCommandEndpoints(1, cmd->apsFrame->sourceEndpoint);
-        emberAfSendCommandUnicast(EMBER_OUTGOING_DIRECT, cmd->source); 
-      
+        
+        emberAfFillCommandIasZoneClusterZoneEnrollResponse(0x00,0x01);
+        emberAfSendCommandUnicast(EMBER_OUTGOING_DIRECT, cmd->source);
         break;
       }
     }
